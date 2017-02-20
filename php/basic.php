@@ -62,10 +62,15 @@ class mysphp
 		return $this->pdo->exec("DELETE FROM `$table` WHERE `id`= $id");
 	}
 
-	public function getfrom($table, $column, $values, $id)/*get*/
+	public function select($table, $column, $id)/*select*/
 	{
-		/*need different cases such as *, single column, multiple or no id, etc*/
-		$get=$this->pdo->query("SELECT `".implode(',`', $column)."` FROM `$table` WHERE `id`= $id");
+		if (count($column)==1) {
+			$qry="SELECT ".$column." FROM `$table` WHERE `id`= $id";
+		}else{
+			$qry="SELECT `".implode(',`', $column)."` FROM `$table` WHERE `id`= $id";
+		}
+		/*need different cases such as multiple or no id, etc*/
+		$get=$this->pdo->query($qry);
 		foreach ($values as $k => $v) {
 			$upd -> bindValue($k+1, $v);
 		}
@@ -96,5 +101,7 @@ if($c->delete("test",4)){
 // 	echo($k ." ".$v."\n");
 // 	echo $q[$k];
 // }
+
+echo Date('Y');
 echo "</pre>";
 ?>
