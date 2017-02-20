@@ -82,26 +82,7 @@ class mysphp
 /*create*/
 }
 echo "<pre>";
-ini_set('display_errors',1);
-error_reporting(E_ALL);
 
-$c=new mysphp("localhost","mona_user","root", "");
-print_r($c);
 
-$col=["fName","lName","age"];
-$q=["aapis","bwoooiiiii","30"];
-// print_r ($col);
-if($c->delete("test",4)){
-	echo "success";
-}
-
-// echo implode(',:', $q);
-
-// foreach ($q as $k => $v) {
-// 	echo($k ." ".$v."\n");
-// 	echo $q[$k];
-// }
-
-echo Date('Y');
 echo "</pre>";
 ?>
